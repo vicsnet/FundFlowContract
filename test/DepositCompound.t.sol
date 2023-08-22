@@ -66,13 +66,16 @@ function testDepositCompound() public{
 
 function testTotalBorrow () public{
     testDepositCompound();
+    vm.warp(block.timestamp + 1 weeks );
     console.log("total borrowed",fund.checkTotalBorrow());
-     vm.stopPrank();
+     console.log('My borrowed amount:', fund.myBorrowedBalance());
+    
 }
 
 function testMyBorrowed() public {
     testDepositCompound();
     console.log('My borrowed amount:', fund.myBorrowedBalance());
+     vm.stopPrank();
 }
 
 }
