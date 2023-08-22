@@ -72,7 +72,7 @@ function testTotalBorrow () public{
 
 function testMyBorrowed() public {
     testDepositCompound();
-    console.log('My borrowed amount:', fund.myBorrowedBalance())
+    console.log('My borrowed amount:', fund.myBorrowedBalance());
 }
 
 }
