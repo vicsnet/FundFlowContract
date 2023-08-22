@@ -56,18 +56,32 @@ contract FundFlowContract {
      *amount: amount to withdraw
      */
     function withdrawCompound(address asset, uint256 amount) external {
-        require(compound.balanceOf(address(this)) <= amount, 'insufficient balance');
+        require(
+            compound.balanceOf(address(this)) <= amount,
+            "insufficient balance"
+        );
         compound.withdraw(asset, amount);
     }
 
-
     /**
-    *@dev to borrow
+     *@dev to borrow
      */
 
-     function borrow(address asset, uint amount) external {
-        // compound.baseBorrowMin();        
-        require(compound.isBorrowCollateralized(address(this)), 'insufficient collateral');
-        compound.withdraw(asset, amount);   
-        }
+    function borrow(address asset, uint amount) external {
+        // compound.baseBorrowMin();
+        require(
+            compound.isBorrowCollateralized(address(this)),
+            "insufficient collateral"
+        );
+        compound.withdraw(asset, amount);
+    }
+
+    function buyCollateral(
+        address asset,
+        uint256 minAmount,
+        uint256 baseAmount,
+        address recipient
+    ) external {
+        compound.buyCollateral(asset, minAmount, baseAmount, recipient);
+    }
 }

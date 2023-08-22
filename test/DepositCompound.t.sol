@@ -41,7 +41,7 @@ function testDeposit() public{
 function testDepositCompound() public{
     testDeposit();
     console.log("contract balance before Coin deposit:", IERC20(UNI).balanceOf(address(fund)));
-    fund.depositCompound( UNI, 10 * 1e18);
+    fund.depositCompound( UNI, 1* 1e18);
     console.log("contract balance After Coin deposit:", IERC20(UNI).balanceOf(address(fund)));
     // vm.stopPrank();
 }
@@ -55,8 +55,10 @@ function testDepositCompound() public{
 
 function testBorrow() public {
     testDepositCompound();
+     IERC20(UNI).safeApprove(address(fund), 1000 * 1e18); 
+fund.buyCollateral(USDC, 1, 1, address(fund));
+//  fund.borrow(USDC, 1 );
 
-    fund.borrow(USDC, 1 );
 }
 
 }
