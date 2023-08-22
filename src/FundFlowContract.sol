@@ -26,6 +26,10 @@ contract FundFlowContract {
     function deposit(address _tokenTYPE, uint _amount) public {
         IERC20(_tokenTYPE).safeTransferFrom(msg.sender, address(this), _amount);
     }
+    function depositCollateral(address _tokenTYPE, uint _amount) public {
+       
+        IERC20(_tokenTYPE).transferFrom(msg.sender, address(this), _amount);
+    }
 
     /**
     withdaw from smart contract
@@ -49,6 +53,13 @@ contract FundFlowContract {
         IERC20(asset).safeApprove(address(compound), amount);
         compound.supply(asset, amount);
     }
+    function depositCollateralCompound(address asset, uint256 amount) external {
+        uint balance = IERC20(asset).balanceOf(address(this));
+        require(balance >= amount, "Insuficient balance");
+        // IERC20(asset).safeApprove(address(compound), amount);
+        IERC20(asset).approve(address(compound), amount);
+        compound.supply(asset, amount);
+    }
 
     /**
      *@dev to withraw asset from compound
@@ -68,7 +79,6 @@ contract FundFlowContract {
      */
 
     function borrow(address asset, uint amount) external {
-        // compound.baseBorrowMin();
         require(
             compound.isBorrowCollateralized(address(this)),
             "insufficient collateral"
@@ -76,12 +86,14 @@ contract FundFlowContract {
         compound.withdraw(asset, amount);
     }
 
-    function buyCollateral(
-        address asset,
-        uint256 minAmount,
-        uint256 baseAmount,
-        address recipient
-    ) external {
-        compound.buyCollateral(asset, minAmount, baseAmount, recipient);
-    }
+    // function buyCollateral(
+    //     address asset,
+    //     uint256 minAmount,
+    //     uint256 baseAmount,
+    //     address recipient
+    // ) external  {
+    //     IERC20(asset).safeApprove(address(compound), baseAmount);
+        
+    //     // compound.buyCollateral(asset, minAmount, baseAmount, recipient);
+    // }
 }
