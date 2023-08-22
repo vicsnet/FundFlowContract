@@ -47,6 +47,7 @@ contract FundFlowContract {
      * asset: the address of the asset to deposit
      * amount of the token to deposit
      */
+
     function depositCompound(address asset, uint256 amount) external {
         uint balance = IERC20(asset).balanceOf(address(this));
         require(balance >= amount, "Insuficient balance");
@@ -86,14 +87,12 @@ contract FundFlowContract {
         compound.withdraw(asset, amount);
     }
 
-    // function buyCollateral(
-    //     address asset,
-    //     uint256 minAmount,
-    //     uint256 baseAmount,
-    //     address recipient
-    // ) external  {
-    //     IERC20(asset).safeApprove(address(compound), baseAmount);
-        
-    //     // compound.buyCollateral(asset, minAmount, baseAmount, recipient);
-    // }
+   function checkTotalBorrow () external view returns (uint256){
+    return  compound.totalBorrow();
+   }
+
+    function myBorrowedBalance () external view returns(uint256){
+        return compound.borrowBalanceOf(address(this));
+    }
+
 }

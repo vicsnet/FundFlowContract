@@ -3,6 +3,10 @@
 pragma solidity ^0.8.17;
 
 interface Icompound{
+struct RewardOwed {
+    address token;
+    uint owed;
+}
 
 function supply(address asset, uint amount) external;
 
@@ -18,11 +22,21 @@ function balanceOf(address owner) external view returns (uint256 balance);
 function baseBorrowMin() external view returns (uint256);
 function isBorrowCollateralized(address account) external view returns (bool);
 function borrow(uint borrowAmount) external returns (uint);
-	function buyCollateral(
-		address asset,
-		uint256 minAmount,
-		uint256 baseAmount,
-		address recipient
-	) external virtual;
+
+function totalBorrow() external view returns (uint256);
+function borrowBalanceOf(address account) external view returns (uint256);
+
+// claim reward
+function claim(address comet, address src, bool shouldAccrue) external;
+
+// comet: The address of the Comet contract.
+// src: The account in which to claim rewards.
+// to: The account in which to transfer the claimed rewards.
+// shouldAccrue: If true, the protocol will account for the rewards owed to the account as of the current block before transferring.
+// RETURN: No return, reverts on error.
+function getRewardOwed(address comet, address account) external returns (RewardOwed memory);
+
+function baseTrackingAccrued(address account) external view returns (uint64);
+
 }
 

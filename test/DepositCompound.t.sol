@@ -45,7 +45,8 @@ function testDepositCompound() public{
     fund.depositCollateralCompound(UNI, 400* 1e18);
     console.log("contract balance After Coin deposit:", IERC20(UNI).balanceOf(address(fund)));
      fund.borrow(USDC, 1000000000);
-    vm.stopPrank();
+                        
+   
 }
 
 // function testWithdrawCompound() public{
@@ -62,5 +63,16 @@ function testDepositCompound() public{
 //  fund.borrow(USDC, 0);
 
 // }
+
+function testTotalBorrow () public{
+    testDepositCompound();
+    console.log("total borrowed",fund.checkTotalBorrow());
+     vm.stopPrank();
+}
+
+function testMyBorrowed() public {
+    testDepositCompound();
+    console.log('My borrowed amount:', fund.myBorrowedBalance())
+}
 
 }
