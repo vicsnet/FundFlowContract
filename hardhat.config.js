@@ -1,6 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require ("hardhat-preprocessor")
-import fs from "fs"
+const fs = require ("fs")
+// import fs from "fs"
 function getRemappings() {
   return fs
     .readFileSync("remappings.txt", "utf8")
@@ -9,9 +10,10 @@ function getRemappings() {
     .map((line) => line.trim().split("="));
 }
 
+const BASE_PRIVATE_KEY = "PRIVATE KEY";
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.19",
+  solidity: "0.8.17",
   preprocess: {
     eachLine: (hre) => ({
       transform: (line) => {
@@ -30,5 +32,15 @@ module.exports = {
   paths: {
     sources: "./src",
     cache: "./cache_hardhat",
+  },
+  networks: {
+    base: {
+      url: `https://base-goerli.rpc.thirdweb.com`,
+      accounts: [BASE_PRIVATE_KEY],
+      gasPrice: 35000000000,
+    },
+  },
+  etherscan: {
+    apiKey: "V31R324BWIZN1CZXXBXCS4VTEAXMXZHM65",
   },
 };

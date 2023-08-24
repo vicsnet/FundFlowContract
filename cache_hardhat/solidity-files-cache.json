@@ -1,0 +1,335 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/src/Counter.sol": {
+      "lastModificationDate": 1692734180623,
+      "contentHash": "ae6c800a2b4c57768024d6e9423d39e8",
+      "sourceName": "src/Counter.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.13"
+      ],
+      "artifacts": [
+        "Counter"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/src/FFFactory.sol": {
+      "lastModificationDate": 1692869820821,
+      "contentHash": "88f9549ba24d76ef7754861ffd87c1b3",
+      "sourceName": "src/FFFactory.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./FundFlowContract.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "FFFactory"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/src/FundFlowContract.sol": {
+      "lastModificationDate": 1692762956766,
+      "contentHash": "23c2bf1614cfbb4169eabbdb4618a4cd",
+      "sourceName": "src/FundFlowContract.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./interface/Icompound.sol",
+        "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "../lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "FundFlowContract"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/src/interface/Icompound.sol": {
+      "lastModificationDate": 1692761946103,
+      "contentHash": "30747790ed907b851743ad854c7fbd70",
+      "sourceName": "src/interface/Icompound.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "Icompound"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1692734311053,
+      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
+      "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": {
+      "lastModificationDate": 1692734311070,
+      "contentHash": "1b5d667d3740d866eca0352758e59827",
+      "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol",
+        "../extensions/IERC20Permit.sol",
+        "../../../utils/Address.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SafeERC20"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/lib/openzeppelin-contracts/contracts/utils/Address.sol": {
+      "lastModificationDate": 1692734311085,
+      "contentHash": "211ffd288c1588ba8c10eae668ca3c66",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/Users/kenzman/Desktop/fundVince/FundFlowContract/lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol": {
+      "lastModificationDate": 1692734311067,
+      "contentHash": "aa849939a4ae83a4dcb2dca9b3e9e707",
+      "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "": {
+              "__CACHE_BREAKER__": "0x0000000000000031363932383733363238363730"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20Permit"
+      ]
+    }
+  }
+}
