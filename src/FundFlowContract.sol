@@ -5,12 +5,6 @@ import {Icompound} from "./interface/Icompound.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
-// Deposit token <> list of acceptable tokens: USDT, USDC, DAI
-// Supply Liquidity
-// Withdraw liquidity and Withdraw Yieid
-// Borrow
-// Bridge
-
 contract FundFlowContract {
     using SafeERC20 for IERC20;
     Icompound compound;
@@ -18,6 +12,10 @@ contract FundFlowContract {
     constructor(address _compound) {
         compound = Icompound(_compound);
     }
+    struct RewardOwed {
+    address token;
+    uint owed;
+    }   
 
     /**
      *_tokenTYPE : address of the token to deposit
@@ -95,4 +93,22 @@ contract FundFlowContract {
         return compound.borrowBalanceOf(address(this));
     }
 
+    function repayLoan(address asset, uint amount) external returns (bool) {
+        uint repaymentAmount = compound.borrowBalanceOf(address(this));
+        require(amount == repaymentAmount, 'repayment not equal owed');
+        compound.supply(asset, repaymentAmount);
+        return true;
+    }
+    function claimReward(address _claimContract, address comet) external {
+        Icompound(_claimContract).claim(comet, address(this), true);
+    }
+    function rewardOwed(address comet, address _claimContract) external returns(RewardOwed memory reward) {
+     address token =  Icompound(_claimContract).getRewardOwed(comet, address(this)).token;  
+     uint owed = Icompound(_claimContract).getRewardOwed(comet, address(this)).owed;   
+     reward = RewardOwed(token, owed);
+    }
+
+    function basetrackingAccrued(address account) external view returns(uint64){
+        return compound.baseTrackingAccrued(account);
+    }
 }

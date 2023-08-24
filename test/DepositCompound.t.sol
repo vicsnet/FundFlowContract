@@ -11,6 +11,10 @@ contract DepositCompound is Test{
     using SafeERC20 for IERC20; 
     FundFlowContract public fund;
     Icompound compound;
+     struct RewardOwed {
+    address token;
+    uint owed;
+    }   
 
  address owner = 0x748dE14197922c4Ae258c7939C7739f3ff1db573;
 //  address owner = 0x4a18a50a8328b42773268B4b436254056b7d70CE;
@@ -21,10 +25,12 @@ contract DepositCompound is Test{
  address COMP = 0xc00e94Cb662C3520282E6f5717214004A7f26888;   
  address UNI = 0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984;   
 address weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+    address claimContract = 0x1B0e765F6224C21223AeA2af16c1C46E38885a40;
+
 //  address asset =
 function setUp() public{
     vm.startPrank(owner);
-    uint mainnet = vm.createFork("https://eth-mainnet.g.alchemy.com/v2/xypdsCZYrlk6oNi93UmpUzKE9kmxHy2n", 17042314);
+    uint mainnet = vm.createFork("https://eth-mainnet.g.alchemy.com/v2/xypdsCZYrlk6oNi93UmpUzKE9kmxHy2n", 17022057);
     vm.selectFork(mainnet);
     fund = new FundFlowContract(compoundAddress);
 }
@@ -44,9 +50,7 @@ function testDepositCompound() public{
     console.log("contract balance before Coin deposit:", IERC20(UNI).balanceOf(address(fund)));
     fund.depositCollateralCompound(UNI, 400* 1e18);
     console.log("contract balance After Coin deposit:", IERC20(UNI).balanceOf(address(fund)));
-     fund.borrow(USDC, 1000000000);
-                        
-   
+    //  fund.borrow(USDC, 1000000000);
 }
 
 // function testWithdrawCompound() public{
@@ -64,18 +68,26 @@ function testDepositCompound() public{
 
 // }
 
-function testTotalBorrow () public{
+// function testTotalBorrow () public{
+//     testDepositCompound();
+//     vm.warp(block.timestamp + 1 weeks );
+//     console.log("total borrowed",fund.checkTotalBorrow());
+//      console.log('My borrowed amount:', fund.myBorrowedBalance());
+// }
+
+// function testMyBorrowed() public {
+//     testDepositCompound();
+//     console.log('My borrowed amount:', fund.myBorrowedBalance());
+//      vm.stopPrank();
+// }
+
+function testClaim() public {
     testDepositCompound();
-    vm.warp(block.timestamp + 1 weeks );
-    console.log("total borrowed",fund.checkTotalBorrow());
-     console.log('My borrowed amount:', fund.myBorrowedBalance());
-    
+    vm.warp(block.timestamp + 365 days );
+    fund.basetrackingAccrued(address(fund));
+    fund.rewardOwed(compoundAddress, claimContract);
+    fund.claimReward(claimContract, compoundAddress);
 }
 
-function testMyBorrowed() public {
-    testDepositCompound();
-    console.log('My borrowed amount:', fund.myBorrowedBalance());
-     vm.stopPrank();
-}
 
 }
