@@ -3,13 +3,15 @@ pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 import "../src/FundFlowContract.sol";
+
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
-
+import "src/FFFactory.sol";
 
 contract DepositCompound is Test{
     using SafeERC20 for IERC20; 
     FundFlowContract public fund;
+    FFFactory factory;
     Icompound compound;
      struct RewardOwed {
     address token;
@@ -33,6 +35,7 @@ function setUp() public{
     uint mainnet = vm.createFork("https://eth-mainnet.g.alchemy.com/v2/xypdsCZYrlk6oNi93UmpUzKE9kmxHy2n", 17022057);
     vm.selectFork(mainnet);
     fund = new FundFlowContract(compoundAddress);
+    factory = new FFFactory();
 }
 
 function testDeposit() public{
@@ -88,6 +91,8 @@ function testClaim() public {
     fund.rewardOwed(compoundAddress, claimContract);
     fund.claimReward(claimContract, compoundAddress);
 }
-
+function testCreateAccount() public {
+    factory.CreateAccount(compoundAddress);
+}
 
 }

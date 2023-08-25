@@ -8,7 +8,7 @@ contract FFFactory {
     mapping (address => bool) AccountStatus;
 
     function CreateAccount(address _comet) external {
-        require(AccountStatus[msg.sender] = false, 'existing user');
+        require(AccountStatus[msg.sender] == false, 'existing user');
         fundFlow = new FundFlowContract(_comet);
         UserAccount[msg.sender] = address(fundFlow);
         AccountStatus[msg.sender] = true;

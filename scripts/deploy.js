@@ -7,12 +7,12 @@
 const hre = require("hardhat");
 
 async function main() {
-      // const Factory = await ethers.getContractFactory("FFFactory");
-      const Child = await ethers.getContractFactory("FundFlowContract");
-      // const factory = await Factory.deploy();
-      const child = await Child.deploy("0xe78Fc55c884704F9485EDa042fb91BfE16fD55c1");
-      // await factory.deployed();
-      await child.deployed();
+      const Factory = await ethers.getContractFactory("FFFactory");
+      // const Child = await ethers.getContractFactory("FundFlowContract");
+      const factory = await Factory.deploy();
+      // const child = await Child.deploy("0xe78Fc55c884704F9485EDa042fb91BfE16fD55c1");
+      await factory.deployed();
+      // await child.deployed();
       
   // console.log(
   //   `Factory is deployed at ${factory.address}`

@@ -10,7 +10,7 @@ function getRemappings() {
     .map((line) => line.trim().split("="));
 }
 
-const BASE_PRIVATE_KEY = "PRIVATE KEY";
+const BASE_PRIVATE_KEY = "9cd05b640ea002da792e39447101739a2bf3438374329ddfc6b47f17b6628c2b";
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.17",
