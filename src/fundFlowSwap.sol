@@ -6,7 +6,7 @@ import {IRouter} from "./interface/IRouter.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract fundFlowContract {
+contract fundFlowSwap {
     IRouter router;
 
     constructor(address _router) {
